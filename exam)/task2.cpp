@@ -24,8 +24,8 @@ double tailorSin(double x)
 
 int task()
 {
-    y=sin(x/2)+sin(x-1);
-    prikol=tailorSin(x/2)+tailorSin(x-1);
+    y=sin(x+1) + sin(x*x);
+    prikol=tailorSin(x*2)+tailorSin(x+1);
     ss=prikol-y;
 
     cout<<"Enter accuracy: ";

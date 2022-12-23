@@ -6,7 +6,7 @@ using namespace std;
 
 int i,j;//line and column of matrix
 int n;//size of matrix
-int arr [10][10];//matrix
+float arr [10][10];//matrix
 
 void random()//Псевдовипадкова генерація для першого завдання
 {
@@ -38,23 +38,40 @@ int search_max(int i, int n)//шукаємо максимальний елеме
     return max;
 }
 
-void negative()//перевіряємо діагональний елемент на від'ємність
+void negative(int *b, int n, int& k)//перевіряємо діагональний елемент на від'ємність
 {
     for (int i = 0; i < n; i++){
         if (arr[i][i] < 0) {
             int t = search_max(i, n);
-               cout<<"Max element of "<< i+1 <<" raw is: "<< t <<endl;
+               cout<<"Max element of "<< i+1 <<" row is: "<< t <<endl;
+            b[k] = t;
+            k++;
         }
     }
 }
 
+int min(int* b, int k) {
+    int min = b[0];
+    for (int i = 0; i < k; i++) {
+        if (b[i] < min)
+            min = b[i];
+    }
+    return min;
+}
+
+
 void task()
 {
+    int k = 0;
+    int* b = new int[100];
+
     cout<<"input size of matrix: ";
     cin>>n;
     random();
     output();
-    negative();
+    negative(b,n,k);
+
+    cout << endl << "Minimal element is = " << min(b, k) << endl;
 }
 
 
